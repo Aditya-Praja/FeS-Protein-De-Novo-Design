@@ -39,6 +39,7 @@ for file in "$CONTAINER" "$CHECKPOINT" \
 done
 
 mkdir -p "$OUTPUT_DIR"
+mkdir -p "$OUTPUT_DIR/schedules"
 
 CONTIG=$(python3 - "$CONSTRAINTS" <<'PY'
 import json
