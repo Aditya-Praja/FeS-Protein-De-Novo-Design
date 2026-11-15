@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #SBATCH --job-name=fes-rfd-40gb
 #SBATCH --nodes=1
