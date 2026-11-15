@@ -1,0 +1,91 @@
+
+# ==========================================
+# Fe-S De Novo Protein Design
+# Project Configuration
+# ==========================================
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+# ==========================================
+# Project Metadata
+# ==========================================
+
+[project]
+name = "fes-protein-de-novo-design"
+version = "0.1.0"
+
+description = "Computational de novo protein design for iron-sulfur cluster binding using RFdiffusion, ProteinMPNN, and structure prediction."
+
+readme = "README.md"
+
+requires-python = ">=3.9"
+
+keywords = [
+    "protein-design",
+    "iron-sulfur-clusters",
+    "computational-biology",
+    "RFdiffusion",
+    "ProteinMPNN",
+    "structural-biology"
+]
+
+
+# ==========================================
+# Core Dependencies
+# ==========================================
+
+dependencies = [
+    "numpy>=1.23",
+    "biopython>=1.80",
+]
+
+
+# ==========================================
+# Optional Development Dependencies
+# ==========================================
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.9",
+]
+
+
+# ==========================================
+# Setuptools Configuration
+# ==========================================
+
+# Currently this repository uses standalone
+# Python scripts rather than an installable
+# Python package.
+
+[tool.setuptools]
+packages = []
+py-modules = []
+
+
+# ==========================================
+# Pytest Configuration
+# ==========================================
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-ra"
+
+
+# ==========================================
+# Ruff Configuration
+# ==========================================
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
