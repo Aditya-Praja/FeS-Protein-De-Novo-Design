@@ -1,6 +1,7 @@
 
 #!/usr/bin/env bash
 set -euo pipefail
+NUM_DESIGNS="${NUM_DESIGNS:-1}"
 
 # Project directories
 PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)}"
@@ -57,6 +58,7 @@ echo "Input PDB: $INPUT_PDB"
 echo "Checkpoint: $CHECKPOINT"
 echo "Contig: $CONTIG"
 echo "Output: $OUTPUT_DIR"
+echo "Number of designs: $NUM_DESIGNS"
 
 apptainer run --nv \
     --bind "$INPUT_DIR:/input:ro" \
@@ -69,7 +71,7 @@ apptainer run --nv \
     inference.model_directory_path=/models \
     inference.schedule_directory_path=/output/schedules \
     inference.ckpt_override_path=/models/ActiveSite_ckpt.pt \
-    inference.num_designs=1 \
+    inference.num_designs="$NUM_DESIGNS" \
     inference.write_trajectory=False \
     "$CONTIG"
 
