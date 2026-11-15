@@ -160,7 +160,7 @@ def main():
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     metadata = json.loads(args.metadata.read_text())
-    pdbs = sorted(args.design_dir.glob('design_*.pdb'))
+    pdbs = sorted(args.design_dir.glob('*.pdb'))
     
     pdbs = [p for p in pdbs if '_plus_reference_FES' not in p.stem]
     if not pdbs:
