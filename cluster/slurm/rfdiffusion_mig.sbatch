@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #SBATCH --job-name=fes-rfd-mig
 #SBATCH --partition=mig
