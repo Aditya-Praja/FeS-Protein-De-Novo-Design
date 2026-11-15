@@ -1,0 +1,89 @@
+{
+  "design": "1off_active_f2_batch01_1.pdb",
+  "mapped_motif_backbone_atoms": 72,
+  "motif_backbone_rmsd_A": 0.2593,
+  "minimum_new_backbone_to_cluster_atom_A": 4.9901,
+  "possible_backbone_clash_if_below_2p0_A": false,
+  "coordinating_cysteine_positions_in_generated_backbone": {
+    "A:40": {
+      "chain": "A",
+      "pdb_number": 31,
+      "sequence_ordinal_1based": 31
+    },
+    "A:45": {
+      "chain": "A",
+      "pdb_number": 36,
+      "sequence_ordinal_1based": 36
+    },
+    "A:48": {
+      "chain": "A",
+      "pdb_number": 39,
+      "sequence_ordinal_1based": 39
+    },
+    "A:78": {
+      "chain": "A",
+      "pdb_number": 52,
+      "sequence_ordinal_1based": 52
+    }
+  },
+  "metal_atoms_reference_overlay": [
+    {
+      "name": "FE1",
+      "element": "FE",
+      "coordinates": [
+        2.2980000972747803,
+        23.860000610351562,
+        6.230000019073486
+      ],
+      "aligned_coordinates": [
+        -1.394829027018572,
+        2.1252856385578447,
+        1.8365554459795979
+      ]
+    },
+    {
+      "name": "FE2",
+      "element": "FE",
+      "coordinates": [
+        3.36299991607666,
+        21.652000427246094,
+        5.142000198364258
+      ],
+      "aligned_coordinates": [
+        -0.34715351341025924,
+        -0.09038959606699493,
+        0.7473390738290258
+      ]
+    },
+    {
+      "name": "S1",
+      "element": "S",
+      "coordinates": [
+        3.937999963760376,
+        22.58099937438965,
+        7.057000160217285
+      ],
+      "aligned_coordinates": [
+        0.2320607591700794,
+        0.830547609577323,
+        2.6649611539653755
+      ]
+    },
+    {
+      "name": "S2",
+      "element": "S",
+      "coordinates": [
+        1.9119999408721924,
+        23.0049991607666,
+        4.177000045776367
+      ],
+      "aligned_coordinates": [
+        -1.7841090400134738,
+        1.2768807163630953,
+        -0.21856076712650818
+      ]
+    }
+  ],
+  "combined_pdb": "outputs/evaluation/flank2/1off_active_f2_batch01_1_plus_reference_FES.pdb",
+  "warning": "Cluster positions are superposed from experimental reference, not predicted or relaxed. New designs have no trustworthy SG rotamers or proven Fe-S binding chemistry."
+}
