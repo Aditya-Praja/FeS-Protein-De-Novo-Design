@@ -61,11 +61,13 @@ echo "Output: $OUTPUT_DIR"
 apptainer run --nv \
     --bind "$INPUT_DIR:/input:ro" \
     --bind "$OUTPUT_DIR:/output" \
+    --bind "$OUTPUT_DIR/schedules:/app/RFdiffusion/schedules" \
     --bind "$MODEL_DIR:/models:ro" \
     "$CONTAINER" \
     inference.input_pdb=/input/rfdiffusion_input.pdb \
     inference.output_prefix=/output/design \
     inference.model_directory_path=/models \
+    inference.schedule_directory_path=/output/schedules \
     inference.ckpt_override_path=/models/ActiveSite_ckpt.pt \
     inference.num_designs=1 \
     inference.write_trajectory=False \
