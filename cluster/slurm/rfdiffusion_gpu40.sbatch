@@ -1,6 +1,5 @@
 #!/bin/bash
 #SBATCH --job-name=fes-rfd-40g
-#SBATCH --partition=gpu
 #SBATCH --constraint=gpu40
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
