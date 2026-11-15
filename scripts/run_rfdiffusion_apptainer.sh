@@ -53,7 +53,7 @@ fi
 CHECKPOINT="$MODEL_DIR/$CHECKPOINT_NAME"
 
 
-INPUT_DIR="$PROJECT_ROOT/data/motifs/1off_2fe2s/${INPUT_TAG}"
+INPUT_DIR="$PROJECT_ROOT/data/motifs/${INPUT_TAG}"
 
 OUTPUT_DIR="$PROJECT_ROOT/outputs/rfdiffusion/1off_2fe2s/${OUTPUT_TAG}"
 
