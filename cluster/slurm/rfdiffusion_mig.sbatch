@@ -5,7 +5,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --gres=gpu:1
-#SBATCH --time= 10:00:00
+#SBATCH --time= 00:50:00
 #SBATCH --output=logs/fes-rfd-%j.out
 #SBATCH --error=logs/fes-rfd-%j.err
 
