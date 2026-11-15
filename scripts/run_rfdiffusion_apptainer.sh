@@ -54,7 +54,7 @@ CHECKPOINT="$MODEL_DIR/$CHECKPOINT_NAME"
 
 INPUT_DIR="$PROJECT_ROOT/data/motifs/1off_2fe2s"
 
-OUTPUT_DIR="$PROJECT_ROOT/outputs/rfdiffusion/1off_2fe2s"
+OUTPUT_DIR="$PROJECT_ROOT/outputs/rfdiffusion/1off_2fe2s/${OUTPUT_TAG}"
 
 INPUT_PDB="$INPUT_DIR/rfdiffusion_input.pdb"
 
