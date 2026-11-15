@@ -118,11 +118,27 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
         min_separation = None
         
     mapping = {(str(a[0]), int(a[1])): (str(b[0]), int(b[1])) for a, b in pairs}
+  
     anchor_out = {}
+
     for ligand in metadata['coordinating_residues']:
-        source_key = (str(ligand['chain']), int(ligand['number']))
+        source_key = (
+            str(ligand['chain']),
+            int(ligand['num'])
+        )
+
         if source_key not in mapping:
-            raise ValueError(f'Cysteine anchor absent from .trb mapping: {source_key}')
+            raise ValueError(
+                f'Cysteine anchor absent from .trb mapping: {source_key}'
+            )
+
+        dest = mapping[source_key]
+
+        anchor_out[f'{source_key[0]}:{source_key[1]}'] = {
+            'chain': dest[0],
+            'pdb_number': dest[1]
+        }
+
         dest = mapping[source_key]
         anchor_out[f'{source_key[0]}:{source_key[1]}'] = {'chain': dest[0], 'pdb_number': dest[1]}
 
