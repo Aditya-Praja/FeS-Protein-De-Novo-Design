@@ -13,10 +13,6 @@ BACKBONE = ('N', 'CA', 'C', 'O')
 
 
 def kabsch_fit(reference: np.ndarray, generated: np.ndarray):
-    """Return row-vector R, translation t: reference @ R + t ~ generated.
-
-    A proper rotation det(R)=+1 is enforced (no reflection).
-    """
     p = np.asarray(reference, dtype=float)
     q = np.asarray(generated, dtype=float)
     if p.shape != q.shape or p.ndim != 2 or p.shape[1] != 3 or len(p) < 3:
@@ -99,7 +95,6 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
     fitted = p @ r + t
     motif_rmsd = float(np.sqrt(np.mean(np.sum((fitted-q)**2, axis=1))))
 
-    # Transfer the original Fe2S2 atoms with the SAME rigid rotation/translation.
     metal_atoms = []
     for atom in metadata['cluster_atoms']:
         record = dict(atom)
@@ -107,7 +102,6 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
         metal_atoms.append(record)
     core = np.stack([np.asarray(a['aligned_coordinates']) for a in metal_atoms])
 
-    # Exclude fixed motif residues: cysteine-to-Fe distances are a distinct problem.
     motif_out_ids = {(str(b[0]), int(b[1])) for _, b in pairs}
     other_atoms = []
     for residue in generated.get_residues():
@@ -122,8 +116,7 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
         min_separation = float(np.min(np.linalg.norm(x[:,None,:] - core[None,:,:],axis=2)))
     else:
         min_separation = None
-
-    # Map the four original cysteine residue identities to generated chain positions.
+        
     mapping = {(str(a[0]), int(a[1])): (str(b[0]), int(b[1])) for a, b in pairs}
     anchor_out = {}
     for ligand in metadata['coordinating_residues']:
@@ -133,7 +126,6 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
         dest = mapping[source_key]
         anchor_out[f'{source_key[0]}:{source_key[1]}'] = {'chain': dest[0], 'pdb_number': dest[1]}
 
-    # ProteinMPNN uses 1-indexed sequence positions, not PDB residue numbers.
     ordinal_by_chain = {}
     for chain in generated:
         ordinal_by_chain[chain.id] = {int(res.id[1]): i for i, res in enumerate(

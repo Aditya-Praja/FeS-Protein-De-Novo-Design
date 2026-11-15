@@ -57,7 +57,6 @@ def main():
     ap.add_argument("--fixed", type=Path, required=True)
     ap.add_argument("--parsed", type=Path, help="Optional official parse_multiple_chains.py JSONL")
     args = ap.parse_args()
-    # Companion prepare_mpnn_inputs.py writes one JSONL line containing all designs.
     fixed = {}
     for line in args.fixed.read_text().splitlines():
         if line.strip():

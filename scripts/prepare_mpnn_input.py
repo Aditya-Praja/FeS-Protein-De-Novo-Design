@@ -13,7 +13,6 @@ def prepare_design(pdb_path, evaluation_path, target_dir):
         ch = mapped['chain']
         num = int(mapped['pdb_number'])
         residue = model[ch][(' ', num, ' ')]
-        # No new atoms: this label conveys *sequence identity*, not a resolved rotamer.
         residue.resname = 'CYS'
         pos_by_chain.setdefault(ch, []).append(int(mapped['sequence_ordinal_1based']))
     if sum(len(x) for x in pos_by_chain.values()) != 4:

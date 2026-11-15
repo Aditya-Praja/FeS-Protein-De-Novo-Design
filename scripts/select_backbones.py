@@ -45,7 +45,6 @@ def backbone_checks(path: Path, min_ca: float, max_ca: float, min_nonlocal: floa
         reasons.append(f"{len(bad)} adjacent CA-CA distances outside [{min_ca}, {max_ca}] A; first pair starts at index {bad[0]}")
     shortest_nonlocal = None
     if len(ca) >= 5:
-        # Ignore residues separated by three or fewer sequence positions.
         i, j = np.triu_indices(len(ca), k=4)
         shortest_nonlocal = float(np.min(np.linalg.norm(ca[i] - ca[j], axis=1)))
         if shortest_nonlocal < min_nonlocal:
