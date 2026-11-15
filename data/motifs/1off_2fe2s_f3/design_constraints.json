@@ -1,0 +1,85 @@
+{
+  "source_pdb": "data/raw_pdb/1off.pdb",
+  "source_metadata": "data/motifs/1off_2fe2s/metadata.json",
+  "coordination_geometry": {
+    "Fe-Fe_distance": 2.6820203266390683,
+    "Fe_bridging_S_distances": [
+      [
+        2.238162853126809,
+        2.257173562199677
+      ],
+      [
+        2.2047423778136084,
+        2.2061803633080674
+      ]
+    ],
+    "cysteines": [
+      {
+        "chain": "A",
+        "residue": 40,
+        "insertion_code": " ",
+        "nearest_fe": 0,
+        "distances_to_fe": [
+          2.25,
+          4.34
+        ]
+      },
+      {
+        "chain": "A",
+        "residue": 45,
+        "insertion_code": " ",
+        "nearest_fe": 0,
+        "distances_to_fe": [
+          2.38,
+          4.6
+        ]
+      },
+      {
+        "chain": "A",
+        "residue": 48,
+        "insertion_code": " ",
+        "nearest_fe": 1,
+        "distances_to_fe": [
+          4.51,
+          2.27
+        ]
+      },
+      {
+        "chain": "A",
+        "residue": 78,
+        "insertion_code": " ",
+        "nearest_fe": 1,
+        "distances_to_fe": [
+          4.36,
+          2.32
+        ]
+      }
+    ],
+    "ligand_per_iron": [
+      2,
+      2
+    ],
+    "warnings": []
+  },
+  "motif_chain": "A",
+  "cysteine_anchor_residue_numbers": [
+    40,
+    45,
+    48,
+    78
+  ],
+  "flank_per_side": 3,
+  "preserved_backbone_segments": [
+    {
+      "chain": "A",
+      "start": 37,
+      "end": 51
+    },
+    {
+      "chain": "A",
+      "start": 75,
+      "end": 81
+    }
+  ],
+  "rfdiffusion_contig": "contigmap.contigs=[10-25/A37-51/6-18/A75-81/10-25]"
+}
