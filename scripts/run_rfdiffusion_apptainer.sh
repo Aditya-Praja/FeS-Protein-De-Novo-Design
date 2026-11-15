@@ -4,6 +4,7 @@ set -euo pipefail
 
 NUM_DESIGNS="${RFD_NUM_DESIGNS:-1}"
 OUTPUT_TAG="${RFD_OUTPUT_TAG:-design}"
+INPUT_TAG="${RFD_INPUT_TAG:-input}"
 MODEL="${RFD_MODEL:-active}"
 
 # Validate settings
@@ -52,7 +53,7 @@ fi
 CHECKPOINT="$MODEL_DIR/$CHECKPOINT_NAME"
 
 
-INPUT_DIR="$PROJECT_ROOT/data/motifs/1off_2fe2s"
+INPUT_DIR="$PROJECT_ROOT/data/motifs/1off_2fe2s/${INPUT_TAG}"
 
 OUTPUT_DIR="$PROJECT_ROOT/outputs/rfdiffusion/1off_2fe2s/${OUTPUT_TAG}"
 
