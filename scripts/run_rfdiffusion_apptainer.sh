@@ -30,6 +30,7 @@ OUTPUT_DIR="$PROJECT_ROOT/outputs/rfdiffusion/1off_2fe2s"
 
 INPUT_PDB="$INPUT_DIR/rfdiffusion_input.pdb"
 CONSTRAINTS="$INPUT_DIR/design_constraints.json"
+OUTPUT_TAG="${OUTPUT_TAG:-design}"
 
 for file in "$CONTAINER" "$CHECKPOINT" \
             "$INPUT_PDB" "$CONSTRAINTS"; do
@@ -60,6 +61,9 @@ echo "Contig: $CONTIG"
 echo "Output: $OUTPUT_DIR"
 echo "Number of designs: $NUM_DESIGNS"
 
+echo "Number of designs: $NUM_DESIGNS"
+echo "Output tag: $OUTPUT_TAG"
+
 apptainer run --nv \
     --bind "$INPUT_DIR:/input:ro" \
     --bind "$OUTPUT_DIR:/output" \
@@ -67,7 +71,7 @@ apptainer run --nv \
     --bind "$MODEL_DIR:/models:ro" \
     "$CONTAINER" \
     inference.input_pdb=/input/rfdiffusion_input.pdb \
-    inference.output_prefix=/output/design \
+    inference.output_prefix=/output/"$OUTPUT_TAG" \
     inference.model_directory_path=/models \
     inference.schedule_directory_path=/output/schedules \
     inference.ckpt_override_path=/models/ActiveSite_ckpt.pt \
