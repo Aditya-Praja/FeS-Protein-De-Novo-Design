@@ -219,3 +219,49 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+
+# ==========================================
+# Fe-S De Novo Design — Research Project
+# ==========================================
+
+# Machine learning model weights and checkpoints
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.pkl
+
+# RFdiffusion and protein design outputs
+outputs/
+results/
+designs/
+trajectories/
+
+# Slurm logs and job outputs
+logs/
+slurm-*.out
+slurm-*.err
+*.sbatch.out
+*.sbatch.err
+
+# Large datasets and intermediate files
+data/processed/
+data/intermediate/
+data/cache/
+
+# RFdiffusion containers and installations
+containers/
+*.sif
+apps/RFdiffusion/
+
+# Python and Conda environments
+envs/
+conda-envs/
+
+# Temporary files and OS metadata
+.DS_Store
+*.tmp
+*.bak
+*~
