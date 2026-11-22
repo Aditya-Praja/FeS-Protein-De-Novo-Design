@@ -86,7 +86,7 @@ def main():
     (args.out / "accepted_pdbs").mkdir(parents=True, exist_ok=True)
     (args.out / "accepted_evaluations").mkdir(parents=True, exist_ok=True)
     rows = []
-    for ev in sorted(args.evaluations.glob("design_*_evaluation.json")):
+    for ev in sorted(args.evaluations.glob("*_evaluation.json")):
         name = ev.name.removesuffix("_evaluation.json")
         pdb = args.design_dir / f"{name}.pdb"
         reasons, measurements = [], {}
