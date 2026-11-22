@@ -1,0 +1,10 @@
+
+flank2
+  Evaluated: 100/100
+  Accepted:  100/100 generated
+  Median motif RMSD: 0.251 Å
+
+flank3
+  Evaluated: 100/100
+  Accepted:  100/100 generated
+  Median motif RMSD: 0.235 Å

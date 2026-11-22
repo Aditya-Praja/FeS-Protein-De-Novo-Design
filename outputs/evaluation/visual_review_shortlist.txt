@@ -1,0 +1,53 @@
+
+==================================================
+flank2: 100 accepted
+==================================================
+
+Low motif RMSD: 1off_active_f2_batch01_2
+  RMSD: 0.235 Å
+  Cluster clearance: 5.525 Å
+  File: outputs/evaluation/flank2/1off_active_f2_batch01_2_plus_reference_FES.pdb
+
+Low motif RMSD: 1off_active_f2_batch01_97
+  RMSD: 0.238 Å
+  Cluster clearance: 5.395 Å
+  File: outputs/evaluation/flank2/1off_active_f2_batch01_97_plus_reference_FES.pdb
+
+Low motif RMSD: 1off_active_f2_batch01_53
+  RMSD: 0.239 Å
+  Cluster clearance: 5.103 Å
+  File: outputs/evaluation/flank2/1off_active_f2_batch01_53_plus_reference_FES.pdb
+
+Largest cluster clearance: 1off_active_f2_batch01_23
+  RMSD: 0.272 Å
+  Cluster clearance: 6.194 Å
+  File: outputs/evaluation/flank2/1off_active_f2_batch01_23_plus_reference_FES.pdb
+
+Closest to clash cutoff: 1off_active_f2_batch01_26
+  RMSD: 0.242 Å
+  Cluster clearance: 4.839 Å
+  File: outputs/evaluation/flank2/1off_active_f2_batch01_26_plus_reference_FES.pdb
+
+==================================================
+flank3: 100 accepted
+==================================================
+
+Low motif RMSD: 1off_active_f3_batch01_64
+  RMSD: 0.204 Å
+  Cluster clearance: 9.238 Å
+  File: outputs/evaluation/flank3/1off_active_f3_batch01_64_plus_reference_FES.pdb
+
+Low motif RMSD: 1off_active_f3_batch01_48
+  RMSD: 0.207 Å
+  Cluster clearance: 8.998 Å
+  File: outputs/evaluation/flank3/1off_active_f3_batch01_48_plus_reference_FES.pdb
+
+Low motif RMSD: 1off_active_f3_batch01_51
+  RMSD: 0.210 Å
+  Cluster clearance: 8.997 Å
+  File: outputs/evaluation/flank3/1off_active_f3_batch01_51_plus_reference_FES.pdb
+
+Closest to clash cutoff: 1off_active_f3_batch01_45
+  RMSD: 0.261 Å
+  Cluster clearance: 5.709 Å
+  File: outputs/evaluation/flank3/1off_active_f3_batch01_45_plus_reference_FES.pdb
