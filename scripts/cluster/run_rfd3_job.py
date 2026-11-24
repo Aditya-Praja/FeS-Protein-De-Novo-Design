@@ -42,6 +42,7 @@ command = [
     "prevalidate_inputs=True",
     "skip_existing=True",
     "dump_trajectories=False",
+    *shlex.split(os.environ.get("FES_RFD3_EXTRA_ARGS", "")),
 ]
 print(shlex.join(command), flush=True)
 if a.execute:
