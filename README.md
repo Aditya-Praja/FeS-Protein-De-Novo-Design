@@ -5,7 +5,7 @@ observed [2Fe–2S] site. Identical monomers form a cyclic ring, and repeating r
 transformations stack rings into finite filament models. C4 is the initial architecture.
 C3–C10 are configurable within the pinned RFD3 symmetry implementation limits.
 
-The CPU workflow covers motif validation → symmetric input preparation → **manual RFD3**
+The CPU workflow covers motif validation → symmetric input preparation → manual RFD3
 → output normalization → ring screening → stack screening → cofactor graphs → ranking
 → LigandMPNN structural input preparation. Sequence generation and experimental validation
 remain subsequent research phases. Geometry alone cannot establish electron transfer,
@@ -26,10 +26,6 @@ fes-wire pre-rfd --config configs/architectures/c4_pilot.yaml
 python -m pytest -q
 ```
 
-The exact transfer, Della installation, submission and retrieval procedure is in
-[the numbered execution guide](docs/execution.md). Definitions, assumptions, configuration
-and scientific limitations are centralized in [methods](docs/methods.md). The
-[audit](docs/repository_audit.md) explains reuse and migration.
 
 ## Repository layout
 
@@ -81,16 +77,3 @@ the current result. Interrupted stages retain their files and report failure. A 
 prevents concurrent writes to the same stage. After a process crash, verify the process
 has ended before removing its stale lock. Historical outputs are never deleted.
 
-## Verification status
-
-The local pre-RFD workflow and synthetic downstream integration are exercised by tests.
-Synthetic fixtures are temporary algorithm tests. They do not demonstrate RFD3 inference
-or a successful nanowire. The pinned model source and documented metadata were inspected.
-The RFD3 CPU parser in its inference environment, FES CCD interpretation, real symmetric
-output mapping and LigandMPNN's installed parser still require the checks described in
-[verification notes](docs/verification.md). Neither model was executed during development.
-
-Compare completed runs with `fes-wire compare --run-ids c3_pilot c4_pilot c5_pilot`.
-The comparison table retains symmetry order, run ID, individual metrics and passing status.
-Per-design normalization, per-ring evaluation and per-stack-grid caches also retain
-completed work when later candidates fail or additional outputs arrive.
