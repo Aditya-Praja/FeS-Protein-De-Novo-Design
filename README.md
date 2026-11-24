@@ -100,24 +100,6 @@ docs/          figures
 tests/         synthetic geometry and interface regression tests
 ```
 
-Quick start (from the repository root, Python 3.9–3.12 for local analysis; RFD3 inference needs Python 3.12):
-
-```bash
-python3 -m venv .venv-wire && source .venv-wire/bin/activate
-python -m pip install -r requirements-analysis.txt
-python -m pip install --no-deps -e .
-fes-wire pre-rfd --config configs/architectures/c4_pilot.yaml
-python -m pytest -q
-```
-
-RFD3 inference on Della (do not pass `--partition`; the cluster routes the job):
-
-```bash
-export FES_RUN_ID=c4_pilot RFD3_ENV=/path/to/env RFD3_CHECKPOINT=/path/to/checkpoint
-sbatch --array=0 --export=ALL cluster/slurm/rfd3_cpu.sbatch   # CPU
-# GPU: source configs/cluster/della.env, then sbatch with --constraint/--mem/--time/--cpus-per-task and cluster/slurm/rfd3.sbatch
-```
-
 ## Computational Tools
 
 | Tool | Role |
