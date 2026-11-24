@@ -13,7 +13,7 @@ BACKBONE = ["N", "CA", "C", "O"]
 def parse_length_range(value: str) -> str:
     pieces = value.split("-")
     
-    if len(pieces) != 2 or all(not p.isdigit() for p in pieces):
+    if len(pieces) != 2 or any(not p.isdigit() for p in pieces):
         raise argparse.ArgumentTypeError("Invalid length range")
     low, high = map(int, pieces)
     

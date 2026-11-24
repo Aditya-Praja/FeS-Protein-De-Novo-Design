@@ -6,7 +6,6 @@ OUTPUT_TAG="${RFD_OUTPUT_TAG:-design}"
 INPUT_TAG="${RFD_INPUT_TAG:-input}"
 MODEL="${RFD_MODEL:-active}"
 
-# Validate settings
 if ! [[ "$NUM_DESIGNS" =~ ^[1-9][0-9]*$ ]]; then
     echo "ERROR: RFD_NUM_DESIGNS must be a positive integer"
     exit 1

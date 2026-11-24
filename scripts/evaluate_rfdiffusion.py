@@ -139,8 +139,6 @@ def calculate_metrics(reference_path, metadata, design_path, trb_path, output_di
             'pdb_number': dest[1]
         }
 
-        dest = mapping[source_key]
-        anchor_out[f'{source_key[0]}:{source_key[1]}'] = {'chain': dest[0], 'pdb_number': dest[1]}
 
     ordinal_by_chain = {}
     for chain in generated:

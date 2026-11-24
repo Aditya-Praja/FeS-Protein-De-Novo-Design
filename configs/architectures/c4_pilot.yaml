@@ -1,0 +1,10 @@
+run_id: c4_pilot
+order: 4
+radius_A: 18.0
+orientation_deg: [0, 0, 0]
+length: 100
+designs: 2
+seed: 42
+rises_A: [20, 25, 30]
+twists_deg: [0, 15, 30, 45]
+layers: 3

@@ -1,21 +1,10 @@
-
-# ==========================================
-# Fe-S De Novo Protein Design
-# Project Configuration
-# ==========================================
-
 [build-system]
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
-
-# ==========================================
-# Project Metadata
-# ==========================================
-
 [project]
 name = "fes-protein-de-novo-design"
-version = "0.1.0"
+version = "0.2.0"
 
 description = "Computational de novo protein design for iron-sulfur cluster binding using RFdiffusion, ProteinMPNN, and structure prediction."
 
@@ -32,20 +21,14 @@ keywords = [
     "structural-biology"
 ]
 
-
-# ==========================================
-# Core Dependencies
-# ==========================================
-
 dependencies = [
-    "numpy>=1.23",
-    "biopython>=1.80",
+    "numpy==2.0.2",
+    "scipy==1.13.1",
+    "PyYAML==6.0.3",
+    "networkx==3.2.1",
+    "matplotlib==3.9.4",
+    "biopython==1.85",
 ]
-
-
-# ==========================================
-# Optional Development Dependencies
-# ==========================================
 
 [project.optional-dependencies]
 
@@ -54,34 +37,18 @@ dev = [
     "ruff>=0.9",
 ]
 
+[project.scripts]
+fes-wire = "fes_wire.cli:main"
 
-# ==========================================
-# Setuptools Configuration
-# ==========================================
-
-# Currently this repository uses standalone
-# Python scripts rather than an installable
-# Python package.
-
-[tool.setuptools]
-packages = []
-py-modules = []
-
-
-# ==========================================
-# Pytest Configuration
-# ==========================================
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["fes_wire*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 addopts = "-ra"
-
-
-# ==========================================
-# Ruff Configuration
-# ==========================================
 
 [tool.ruff]
 line-length = 100

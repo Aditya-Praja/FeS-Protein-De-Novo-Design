@@ -1,0 +1,50 @@
+{
+  "config": {
+    "source": "data/raw_pdb/1off.pdb",
+    "motif": "data/motifs/1off_2fe2s/motif.pdb",
+    "metadata": "data/motifs/1off_2fe2s/metadata.json",
+    "context": "data/motifs/1off_2fe2s_f2/rfdiffusion_input.pdb",
+    "run_id": "c4_production",
+    "order": 4,
+    "radius_A": 18.0,
+    "orientation_deg": [
+      0,
+      0,
+      0
+    ],
+    "length": 100,
+    "designs": 100,
+    "seed": 1000,
+    "rises_A": [
+      15,
+      20,
+      25,
+      30,
+      35
+    ],
+    "twists_deg": [
+      0,
+      15,
+      30,
+      45,
+      60,
+      75
+    ],
+    "layers": 3,
+    "clash_A": 1.5,
+    "contact_A": 5.0,
+    "network_edge_A": 14.0,
+    "max_motif_rmsd_A": 1.0,
+    "max_symmetry_rmsd_A": 1.0,
+    "min_axial_contacts": 1,
+    "min_ring_contacts": 1,
+    "require_network_path": false,
+    "top_k": 5,
+    "weights": {
+      "axial_contacts": 1.0,
+      "motif_rmsd_A": -10.0
+    }
+  },
+  "inputs": "runs/c4_production/rfd_inputs/04b9a3e046bd9762",
+  "rfd3_revision": "a13b299a05897b951ea28b65e977eebb984380bc"
+}

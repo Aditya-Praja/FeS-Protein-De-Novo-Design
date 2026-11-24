@@ -1,114 +1,96 @@
-# De Novo Fe–S Protein Design
+# Fe–S protein nanowire design
 
-Computational design of novel iron–sulfur (Fe–S) binding proteins using generative structural models and protein language models.
+This repository prepares and geometrically screens proteins containing an experimentally
+observed [2Fe–2S] site. Identical monomers form a cyclic ring, and repeating rise/twist
+transformations stack rings into finite filament models. C4 is the initial architecture.
+C3–C10 are configurable within the pinned RFD3 symmetry implementation limits.
 
-## Overview
+The CPU workflow covers motif validation → symmetric input preparation → **manual RFD3**
+→ output normalization → ring screening → stack screening → cofactor graphs → ranking
+→ LigandMPNN structural input preparation. Sequence generation and experimental validation
+remain subsequent research phases. Geometry alone cannot establish electron transfer,
+conductivity, affinity, thermodynamic stability or self-assembly.
 
-This project explores the de novo design of protein scaffolds capable of accommodating iron–sulfur clusters. Fe–S clusters are important biological cofactors involved in electron transfer, catalysis, and other essential cellular processes.
+## Start here
 
-The goal is to develop a computational pipeline that generates novel protein structures around specified Fe–S coordination motifs, designs compatible amino acid sequences, and evaluates the resulting candidates for structural and chemical plausibility.
+Run from the repository root. Python 3.9–3.12 supports the pinned local environment.
+The independent inference environment requires Python 3.12 or newer at the recorded revision.
 
-This work serves as an initial foundation for investigating more unconventional metal–sulfur architectures, including proposed nickel–sulfur structures associated with electron transport in cable bacteria.
-
-## Biological Background
-
-Iron–sulfur clusters consist of iron atoms coordinated with inorganic sulfide ions and surrounding amino acid residues, commonly cysteine.
-
-These clusters can support electron transfer through reversible changes in their oxidation states. Their function depends on both the cluster's chemical properties and the surrounding protein environment.
-
-### Reference Protein Structure
-
-![Reference Fe–S protein structure](docs/figures/reference.png)
-
-### Extracted Fe–S Coordination Motif
-
-![Fe2S2 Motif](docs/figures/Fe2S2.png)
-
-![Extracted Fe–S coordination motif](docs/figures/motif_visualization.png)
-## Computational Design Pipeline
-
-The pipeline combines structural motif extraction, backbone generation, sequence design, and computational validation.
-
-```text
-Experimental Fe–S Protein Structures
-                 |
-                 v
-       Fe–S Motif Extraction
-                 |
-                 v
-    Coordination Geometry Analysis
-                 |
-                 v
-    RFdiffusion Backbone Generation
-                 |
-                 v
-     ProteinMPNN Sequence Design
-                 |
-                 v
-       ESM Sequence Analysis
-                 |
-                 v
-   AlphaFold / ColabFold Validation
-                 |
-                 v
-    Geometry Evaluation & Ranking
-                 |
-                 v
-      Candidate Fe–S Proteins
+```bash
+python3 -m venv .venv-wire
+source .venv-wire/bin/activate
+python -m pip install -r requirements-analysis.txt
+python -m pip install --no-deps -e .
+fes-wire audit
+fes-wire pre-rfd --config configs/architectures/c4_pilot.yaml
+python -m pytest -q
 ```
 
-**1. Motif extraction:** Identify Fe–S clusters and their coordinating residues from experimentally determined protein structures.
+The exact transfer, Della installation, submission and retrieval procedure is in
+[the numbered execution guide](docs/execution.md). Definitions, assumptions, configuration
+and scientific limitations are centralized in [methods](docs/methods.md). The
+[audit](docs/repository_audit.md) explains reuse and migration.
 
-**2. Backbone generation:** Use RFdiffusion to generate novel protein scaffolds conditioned on selected structural constraints.
-
-**3. Sequence design:** Use ProteinMPNN to generate amino acid sequences compatible with the resulting backbones while preserving critical binding-site residues.
-
-**4. Sequence analysis:** Use ESM protein language models to extract representations and evaluate sequence characteristics.
-
-**5. Structural validation:** Use AlphaFold/ColabFold predictions and geometry-based analysis to assess fold plausibility, motif preservation, and candidate quality.
-
-Predicted structural compatibility does not establish actual Fe–S binding or electron-transfer function. Experimental characterization would be required to validate these properties.
-
-## Designed Protein Structures
-
-*Placeholder: Side-by-side comparison of an experimentally determined reference structure and a generated protein scaffold.*
-
-![Reference versus designed protein](docs/figures/design_comparison.png)
-
-*Placeholder: Close-up comparison of the intended Fe–S coordination motif and its geometry in a selected designed scaffold.*
-
-![Designed Fe–S binding site](docs/figures/designed_binding_site.png)
-
-## Project Organization
+## Repository layout
 
 ```text
-configs/ 
-data/     
-src/     
-scripts/ 
-notebooks/ 
-experiments/  
-outputs/     
-cluster/      
-docs/         
-tests/         
+configs/architectures/       pilot and production YAML
+configs/cluster/             configurable Della resources
+src/fes_wire/                CPU preparation, geometry, adapters and CLI
+scripts/cluster/            manual RFD3 runner and CPU parser validation
+cluster/slurm/rfd3.sbatch    array job entry point
+runs/<run_id>/              stage pointers and content-addressed results
+  motif_validation/         source comparison and donor inventory
+  rfd_inputs/               PDB/mmCIF, constraints, transforms, jobs
+  rfd_outputs/              user-generated inference output
+  processed/                canonical structures and mappings
+  ring_evaluation/          ring and monomer measurements
+  stack_evaluation/         rise/twist grid and cofactor graphs
+  ranked_candidates/        all, rejected, passing and selected candidates
+  ligandmpnn_inputs/        selected monomer, ring and stack contexts
+data/                      preserved source, core and flank motifs
+outputs/                   preserved historical results
+scripts/                   historical RFdiffusion/ProteinMPNN workflow
+tests/                     synthetic geometry and interface regression tests
+docs/                      audit, methods, execution and verification notes
 ```
 
-## Computational Tools
+## Individual stages
 
-| Tool | Role |
-|---|---|
-| BioPython / Gemmi | Protein structure parsing and motif extraction |
-| RFdiffusion | De novo protein backbone generation |
-| ProteinMPNN | Structure-conditioned sequence design |
-| ESM-2 | Protein sequence representations and analysis |
-| AlphaFold / ColabFold | Structure prediction and validation |
-| PyTorch | Deep learning inference |
-| PyMOL | Molecular visualization |
+```bash
+fes-wire validate-motif --config configs/architectures/c4_pilot.yaml
+fes-wire prepare-symmetry --config configs/architectures/c4_pilot.yaml
+fes-wire prepare-rfd --config configs/architectures/c4_pilot.yaml
+fes-wire process-rfd --run-id c4_pilot
+fes-wire evaluate-rings --run-id c4_pilot
+fes-wire evaluate-stacks --run-id c4_pilot
+fes-wire rank --run-id c4_pilot
+fes-wire prepare-mpnn --run-id c4_pilot
+fes-wire post-rfd --run-id c4_pilot
+```
 
-## Personal Notes
+`prepare-symmetry` and `prepare-rfd` share one preparation stage to avoid duplicate work.
+Run motif validation first, or use `pre-rfd`. `--run-id` loads the saved run configuration.
+To change analysis settings, supply a YAML with the same run ID using `--config`.
+Use a new run ID for a new placement, symmetry or generation configuration.
 
+Each stage records input/output SHA-256 hashes, configuration, code hashes, dependency
+versions and completion status. Unchanged stages are reused. `--force` reruns the matching
+stage. Changed inputs create a distinct result directory. Stage pointer JSON files identify
+the current result. Interrupted stages retain their files and report failure. A `.lock`
+prevents concurrent writes to the same stage. After a process crash, verify the process
+has ended before removing its stale lock. Historical outputs are never deleted.
 
+## Verification status
 
-## References:
-Approximate Structural Values for 2Fe-2S: [The competition between chemistry and biology in assembling iron–sulfur derivatives](https://www.sciencedirect.com/science/article/abs/pii/S0010854514002082)
+The local pre-RFD workflow and synthetic downstream integration are exercised by tests.
+Synthetic fixtures are temporary algorithm tests. They do not demonstrate RFD3 inference
+or a successful nanowire. The pinned model source and documented metadata were inspected.
+The RFD3 CPU parser in its inference environment, FES CCD interpretation, real symmetric
+output mapping and LigandMPNN's installed parser still require the checks described in
+[verification notes](docs/verification.md). Neither model was executed during development.
+
+Compare completed runs with `fes-wire compare --run-ids c3_pilot c4_pilot c5_pilot`.
+The comparison table retains symmetry order, run ID, individual metrics and passing status.
+Per-design normalization, per-ring evaluation and per-stack-grid caches also retain
+completed work when later candidates fail or additional outputs arrive.

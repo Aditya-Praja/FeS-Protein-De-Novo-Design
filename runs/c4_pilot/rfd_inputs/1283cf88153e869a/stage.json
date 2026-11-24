@@ -1,0 +1,79 @@
+{
+  "inputs": {
+    "data/motifs/1off_2fe2s/motif.pdb": "d8f5f5d0e353ff064aec0bc09255eddac9e6768545105fe1b68a0afaf4f969bd",
+    "data/motifs/1off_2fe2s_f2/rfdiffusion_input.pdb": "ae719505d88f08829f6ea9ec799f902eb2ffa6e7994cf8b8614eb3eff07a83f4",
+    "data/raw_pdb/1off.pdb": "8768ff508192e1987925dfa89eb9e7c0eb07064da95d169935e079e93a9226dd",
+    "runs/c4_pilot/motif_validation/6f0018a62f69fcf9/validation.json": "757188ea5ea4cd512b03dcca15d77d9fe243eb85974211dce2e26b24d8a90cea"
+  },
+  "config": {
+    "source": "data/raw_pdb/1off.pdb",
+    "motif": "data/motifs/1off_2fe2s/motif.pdb",
+    "metadata": "data/motifs/1off_2fe2s/metadata.json",
+    "context": "data/motifs/1off_2fe2s_f2/rfdiffusion_input.pdb",
+    "run_id": "c4_pilot",
+    "order": 4,
+    "radius_A": 18.0,
+    "orientation_deg": [
+      0,
+      0,
+      0
+    ],
+    "length": 100,
+    "designs": 2,
+    "seed": 42,
+    "rises_A": [
+      20,
+      25,
+      30
+    ],
+    "twists_deg": [
+      0,
+      15,
+      30,
+      45
+    ],
+    "layers": 3,
+    "clash_A": 1.5,
+    "contact_A": 5.0,
+    "network_edge_A": 14.0,
+    "max_motif_rmsd_A": 1.0,
+    "max_symmetry_rmsd_A": 1.0,
+    "min_axial_contacts": 1,
+    "min_ring_contacts": 1,
+    "require_network_path": false,
+    "top_k": 5,
+    "weights": {
+      "axial_contacts": 1.0,
+      "motif_rmsd_A": -10.0
+    }
+  },
+  "code": {
+    "symmetry.py": "5e1ffe7aab38416b19bd0a0eb6514a2c1976cd4f38b928832c9f8b7ab26429dc",
+    "config.py": "5e30002b8a42bfeb33acdb77a1e2e412133023f3976b16316121cf4e65c0db06",
+    "rfd3.py": "8decff54201d5c060823d2b4c331b931fad81f661554797ad46a5c1cf06c0dd5",
+    "evaluation.py": "a5e593f3ca3e5c1e193a8a882bc457b80963c8905631b9ec2fc7c8de4ab6596c",
+    "__init__.py": "976554ebf3985bc291e0bd888098df4d1255cde36fb9e74148e9573069566126",
+    "cofactor_network.py": "60b2a242fe65febdda158aa2795a68d0554bc35201432351ee378d91b37ab2a1",
+    "cli.py": "ae95e670c294ceeda35f1b65831c0f5f78592643e3eedaa85d4f4168239ddd60",
+    "ligandmpnn_inputs.py": "f061a7fe78b0c4290c7a827c5833f3a103ec77e9b4521eab98a519286936a15b",
+    "motif.py": "2dafc62916cab44c2bb4b77f321322cdcb13b9f2f21912e77bdf3c3e125675af",
+    "geometry.py": "5264ad9ae44da0a39d1ccecf47afc9ab294f5ddc205db03c25209037b35dc970",
+    "ranking.py": "f0ca2462f7ff854500a68af3d96cae6ff5b54c3335cb9a13c9acd22d28ad8f4c",
+    "structures.py": "1ed90bbcc2b0341c7f4df92476575c19737b9c1de1324961e4df48b391130e64",
+    "state.py": "b430533e0a592b7dc71e61bcfc13275b0d9b733dbe32203d24cab8d669d19de1"
+  },
+  "software": {
+    "numpy": "2.0.2",
+    "scipy": "1.13.1",
+    "biopython": "1.85"
+  },
+  "status": "complete",
+  "outputs": {
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/symmetric_motif.cif": "7804b484f9be916f2112c5bf35c71c63c5ef7aaf57e114c875579984ac163a79",
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/symmetric_motif.pdb": "8529b763369a4a9144b45cf592a07f9c15b2998cc577df58e768e298d7fc628e",
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/transforms.json": "421492f3842d17520710a443fa6e74a7e4193464fd11cac9fbc932d2cb4e7be0",
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/inputs.json": "28bb9892cdaed8bd6848000399759b3965f30dfa75adb1998d77ed4fa266dbe3",
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/manifest.json": "ce067b2c9efa3e6cce58a1dbaf7800467cc3b1a54c02de9b5323189d3d2c2269",
+    "runs/c4_pilot/rfd_inputs/1283cf88153e869a/jobs.json": "c780bdb71059186dd3b1d59a57860991c9868efab81602238a0e1f41993d623d"
+  }
+}

@@ -35,7 +35,7 @@ def main():
     pdb_folder = args.out / 'inputs'
     pdb_folder.mkdir(parents=True, exist_ok=True)
     fixed = {}
-    for ev in sorted(args.evaluations.glob('design_*_evaluation.json')):
+    for ev in sorted(args.evaluations.glob('*_evaluation.json')):
         stem = ev.name.removesuffix('_evaluation.json')
         original = args.design_dir / f'{stem}.pdb'
         if not original.exists():

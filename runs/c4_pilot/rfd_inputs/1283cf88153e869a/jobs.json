@@ -1,0 +1,14 @@
+[
+  {
+    "index": 0,
+    "seed": 42,
+    "inputs": "runs/c4_pilot/rfd_inputs/1283cf88153e869a/inputs.json",
+    "out_dir": "runs/c4_pilot/rfd_outputs/job_00000"
+  },
+  {
+    "index": 1,
+    "seed": 43,
+    "inputs": "runs/c4_pilot/rfd_inputs/1283cf88153e869a/inputs.json",
+    "out_dir": "runs/c4_pilot/rfd_outputs/job_00001"
+  }
+]
