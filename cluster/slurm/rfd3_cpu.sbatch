@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-# CPU-only RFdiffusion3 run. Do not pass --partition (Della routes the job itself).
-# Suggested submit:
-#   sbatch --cpus-per-task=16 --mem=64G --time=24:00:00 --array=0 --export=ALL cluster/slurm/rfd3_cpu.sbatch
-# Optional: export FES_RFD3_EXTRA_ARGS="key=value ..." to pass extra Hydra overrides to rfd3
-# (e.g. a device override if your Foundry version needs one to run on CPU).
 #SBATCH --job-name=fes-rfd3-cpu
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
-#SBATCH --time=24:00:00
+#SBATCH --time=00:30:00
 #SBATCH --output=logs/rfd3-cpu-%A_%a.out
 #SBATCH --error=logs/rfd3-cpu-%A_%a.err
 set -euo pipefail
