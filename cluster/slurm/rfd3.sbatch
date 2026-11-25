@@ -14,4 +14,14 @@ cd "${SLURM_SUBMIT_DIR:?Submit from the project root}"
 [[ -x "$RFD3_ENV/bin/python" ]] || { echo "Missing inference Python" >&2; exit 2; }
 export PATH="$RFD3_ENV/bin:$PATH"
 export PYTHONPATH="$PWD/src${PYTHONPATH:+:$PYTHONPATH}"
-python scripts/cluster/run_rfd3_job.py --run-id "$FES_RUN_ID" --index "${SLURM_ARRAY_TASK_ID:-0}" --execute
+# FES_CHUNK designs per array task (default 1). Task T runs design indices T*CHUNK .. T*CHUNK+CHUNK-1,
+# so a small array covers many designs and stays under per-user job-submit limits.
+# Set FES_TOTAL to the number of designs so the final task stops at the end.
+CHUNK="${FES_CHUNK:-1}"
+TOTAL="${FES_TOTAL:-$(( ${SLURM_ARRAY_TASK_ID:-0} * CHUNK + CHUNK ))}"
+start=$(( ${SLURM_ARRAY_TASK_ID:-0} * CHUNK ))
+status=0
+for (( i = start; i < start + CHUNK && i < TOTAL; i++ )); do
+    python scripts/cluster/run_rfd3_job.py --run-id "$FES_RUN_ID" --index "$i" --execute || status=$?
+done
+exit $status
