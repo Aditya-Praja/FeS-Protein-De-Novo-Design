@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=gpu40
 #SBATCH --mem=8G
-#SBATCH --time=04:00:00
+#SBATCH --time=0:50:00
 #SBATCH --output=logs/fes-40gb-%j.out
 #SBATCH --error=logs/fes-40gb-%j.err
 
