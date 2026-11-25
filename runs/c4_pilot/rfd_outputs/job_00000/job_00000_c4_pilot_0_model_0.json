@@ -1,0 +1,96 @@
+{
+    "diffused_index_map": {
+        "A40": "A36",
+        "A45": "D24",
+        "A48": "A33",
+        "A78": "A39",
+        "B40": "D36",
+        "B45": "C24",
+        "B48": "D33",
+        "B78": "D39",
+        "C40": "C36",
+        "C45": "B24",
+        "C48": "C33",
+        "C78": "C39",
+        "D40": "B36",
+        "D45": "A24",
+        "D48": "B33",
+        "D78": "B39"
+    },
+    "metrics": {
+        "join_point_rmsd_by_token": {},
+        "insertion.mae": 8.061409562826157,
+        "insertion.rmcd": 5.06326650083065,
+        "insertion_rmsd": 5.481283873319626,
+        "join_point_rmsd": NaN,
+        "n_conjoined_residues": 16,
+        "max_ca_deviation": 6.865891456604004,
+        "n_chainbreaks": 24,
+        "n_clashing.interresidue_clashes_w_sidechain": 8,
+        "n_clashing.interresidue_clashes_w_backbone": 0,
+        "n_clashing.ligand_clashes": 0,
+        "n_clashing.ligand_min_distance": 4.7672224044799805,
+        "non_loop_fraction": 0.5729166666666666,
+        "loop_fraction": 0.4270833333333333,
+        "helix_fraction": 0.0,
+        "sheet_fraction": 0.5729166666666666,
+        "num_ss_elements": 28,
+        "radius_of_gyration": 18.57718375318557,
+        "alanine_content": 0.25,
+        "glycine_content": 0.06,
+        "num_residues": 400,
+        "diffused_com": [
+            -0.0009318476659245789,
+            0.0009197525214403868,
+            0.12047190219163895
+        ],
+        "fixed_com": [
+            -1.5326908453516808e-07,
+            -3.181131944529625e-07,
+            -2.9802322387695312e-08
+        ]
+    },
+    "specification": {
+        "input": "/Users/adityaprajapati/Documents/De Novo Design/Fe-S-De-Novo-Design/runs/c4_pilot/rfd_inputs/9fa32ecb9264218b/symmetric_motif.pdb",
+        "unindex": "A40,A45,A48,A78",
+        "length": "100",
+        "ligand": "FES",
+        "allow_ligand_on_existing_chain": true,
+        "extra": {
+            "example": "c4_pilot",
+            "task_name": "job_00000_c4_pilot",
+            "sampled_contig": "100P",
+            "num_tokens_in": 420,
+            "num_residues_in": 420,
+            "num_chains": 8,
+            "num_atoms": 2112,
+            "num_residues": 113,
+            "example_id": "job_00000_c4_pilot_0"
+        },
+        "select_fixed_atoms": {
+            "A40": "N,CA,C,O,CB,SG",
+            "A45": "N,CA,C,O,CB,SG",
+            "A48": "N,CA,C,O,CB,SG",
+            "A78": "N,CA,C,O,CB,SG",
+            "FES": "ALL"
+        },
+        "select_unfixed_sequence": false,
+        "symmetry": {
+            "id": "C4"
+        }
+    },
+    "ckpt_path": "/Users/adityaprajapati/foundry_checkpoints/rfd3_latest.ckpt",
+    "seed": 42,
+    "inference_settings": {
+        "mode": "fast",
+        "execution_path": "legacy",
+        "random_stream": "legacy_global",
+        "pooling": "fp32_mean",
+        "compile_model": true,
+        "compile_cuda_graphs": true,
+        "inference_batch_size": 1,
+        "kernel_backend": "torch",
+        "dense_attention_backend": "vanilla",
+        "inference_cuda_graph": false
+    }
+}

@@ -1,0 +1,74 @@
+{
+  "inputs": {
+    "data/motifs/1off_2fe2s/metadata.json": "e3d5e7b568fa878b845a35e9f76527c43f14f9498701aaf8a34cda8322a6f3b9",
+    "data/motifs/1off_2fe2s/motif.pdb": "d8f5f5d0e353ff064aec0bc09255eddac9e6768545105fe1b68a0afaf4f969bd",
+    "data/raw_pdb/1off.pdb": "8768ff508192e1987925dfa89eb9e7c0eb07064da95d169935e079e93a9226dd"
+  },
+  "config": {
+    "source": "data/raw_pdb/1off.pdb",
+    "motif": "data/motifs/1off_2fe2s/motif.pdb",
+    "metadata": "data/motifs/1off_2fe2s/metadata.json",
+    "context": "data/motifs/1off_2fe2s_f2/rfdiffusion_input.pdb",
+    "run_id": "c4_pilot",
+    "order": 4,
+    "radius_A": 18.0,
+    "orientation_deg": [
+      0,
+      0,
+      0
+    ],
+    "length": 100,
+    "designs": 2,
+    "seed": 42,
+    "rises_A": [
+      20,
+      25,
+      30
+    ],
+    "twists_deg": [
+      0,
+      15,
+      30,
+      45
+    ],
+    "layers": 3,
+    "clash_A": 1.5,
+    "contact_A": 5.0,
+    "network_edge_A": 14.0,
+    "max_motif_rmsd_A": 1.0,
+    "max_symmetry_rmsd_A": 1.0,
+    "min_axial_contacts": 1,
+    "min_ring_contacts": 1,
+    "require_network_path": false,
+    "top_k": 5,
+    "weights": {
+      "axial_contacts": 1.0,
+      "motif_rmsd_A": -10.0
+    }
+  },
+  "code": {
+    "symmetry.py": "bc50ecc7dc0e4ca4ebb995048f3416de3fa44fe749d8571df69792ad50259eef",
+    "config.py": "0a2a2015101de16a51585f7ec5f338a827a93a3f0ce1359d93d6a2a2c4fbbf90",
+    "rfd3.py": "2324386c83414632ced2ed17fe26f499f8180bff916bb5687345bbef229c203c",
+    "evaluation.py": "3e5749e95ef7710bab9e7fb3ad5bc3d792348163375b820f67614d520b623aaf",
+    "__init__.py": "667d4a15b970b851e20d17510224670c14646cfb6d5a1e388ca6b9cc6da8bf41",
+    "cofactor_network.py": "9fef8433e9c445740729428c58b3ac7cc0800dfb9433687b003097358673c48a",
+    "cli.py": "ae95e670c294ceeda35f1b65831c0f5f78592643e3eedaa85d4f4168239ddd60",
+    "ligandmpnn_inputs.py": "4fa15dea4373d8d7ab49b4e955654da6198f9358f0b602979b0d6f1472fc0902",
+    "motif.py": "ba5187ef9a0c5d2a838bc3f913569985e02f4d370d0cc017d3419dd862598b0f",
+    "geometry.py": "ddb4047ef339993eb3a776b4488b28dc53eedeb47b4b9210a616bc20c1297463",
+    "ranking.py": "5b674a3ea67695ec7b00e534cff51b6b3ac596495709d60441517f333fc4a120",
+    "structures.py": "58cee5ad0725208affc32c6ac19fd1a421a5f818a4f34643a43229b23754ee99",
+    "state.py": "d74184c35f789d3358249b1e01e85e88b4443660fef9de26484aa33c195923e5"
+  },
+  "software": {
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "biopython": "1.85"
+  },
+  "status": "complete",
+  "outputs": {
+    "runs/c4_pilot/motif_validation/c74450c93374597b/report.md": "5dd851cf7ab3b8fd968962c2e1548f41eba3c10a4167fca483ab1fa33c08ede0",
+    "runs/c4_pilot/motif_validation/c74450c93374597b/validation.json": "757188ea5ea4cd512b03dcca15d77d9fe243eb85974211dce2e26b24d8a90cea"
+  }
+}
