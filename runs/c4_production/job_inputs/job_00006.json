@@ -1,0 +1,20 @@
+{
+  "c4_production": {
+    "input": "/scratch/gpfs/JATKINSON/ap4801/FeS-Protein-De-Novo-Design/runs/c4_production/rfd_inputs/04b9a3e046bd9762/symmetric_motif.pdb",
+    "ligand": "FES",
+    "unindex": "A40,A45,A48,A78",
+    "length": 100,
+    "select_fixed_atoms": {
+      "A40": "N,CA,C,O,CB,SG",
+      "A45": "N,CA,C,O,CB,SG",
+      "A48": "N,CA,C,O,CB,SG",
+      "A78": "N,CA,C,O,CB,SG",
+      "FES": "ALL"
+    },
+    "allow_ligand_on_existing_chain": true,
+    "symmetry": {
+      "id": "C4",
+      "is_symmetric_motif": true
+    }
+  }
+}

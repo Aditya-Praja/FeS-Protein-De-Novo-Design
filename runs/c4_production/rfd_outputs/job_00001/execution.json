@@ -1,0 +1,26 @@
+{
+  "command": [
+    "rfd3",
+    "design",
+    "inputs=/scratch/gpfs/JATKINSON/ap4801/FeS-Protein-De-Novo-Design/runs/c4_production/job_inputs/job_00001.json",
+    "out_dir=runs/c4_production/rfd_outputs/job_00001",
+    "ckpt_path=/home/ap4801/.foundry/checkpoints/rfd3_latest.ckpt",
+    "seed=1001",
+    "diffusion_batch_size=1",
+    "n_batches=1",
+    "inference_sampler.kind=symmetry",
+    "prevalidate_inputs=True",
+    "skip_existing=True",
+    "dump_trajectories=False"
+  ],
+  "revision": "a13b299a05897b951ea28b65e977eebb984380bc",
+  "checkpoint_sha256": "9b3f85923e0d51e9453e15cdd2f8c666e7ce096a60577f57d11bbc54ae6d67c1",
+  "job": {
+    "index": 1,
+    "seed": 1001,
+    "inputs": "runs/c4_production/rfd_inputs/04b9a3e046bd9762/inputs.json",
+    "out_dir": "runs/c4_production/rfd_outputs/job_00001"
+  },
+  "status": "failed",
+  "returncode": 1
+}
